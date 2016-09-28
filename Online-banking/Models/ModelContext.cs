@@ -63,7 +63,7 @@ namespace Online_banking.Models
         {
             [Key]
             public string postalCode { get; set; }
-            public string City { get; set; }
+            public string city { get; set; }
         }
 
 
