@@ -18,7 +18,7 @@ namespace Online_banking.Models
 
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
-        public DbSet <Transaction> Transactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Postal> Postals { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
 
@@ -42,7 +42,6 @@ namespace Online_banking.Models
         {
             [Key]
             public int aID { get; set; }
-            public User pID { get; set; }
             public string name { get; set; }
             public AccountType accountType { get; set; }
             public double balance { get; set; }
@@ -62,7 +61,8 @@ namespace Online_banking.Models
 
         public class Postal
         {
-            public User postalCode { get; set; }
+            [Key]
+            public string postalCode { get; set; }
             public string City { get; set; }
         }
 
@@ -75,21 +75,6 @@ namespace Online_banking.Models
             public double limit {get; set;}
             public double yearlyFee { get; set; }
         }
-        /*
-        public class CreditAccount : AccountType
-        {
-            public static int ID = 1;
-            public double limit { get; set; }
-            public double yearlyFee { get; set; }
-        }
-
-        public class DebitAccount : AccountType
-        {
-            public static int ID = 2;
-            public int maxWithdraw { get; set; }
-            public int withdrawCounter { get; set; }
-        }
-       */
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
