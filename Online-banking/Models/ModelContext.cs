@@ -34,7 +34,7 @@ namespace Online_banking.Models
         public class User
         {
             [Key]
-            public int pID { get; set; }
+            public string personalIdentification { get; set; }
             public string firstname { get; set; }
             public string lastname { get; set; }
             public string address { get; set; }

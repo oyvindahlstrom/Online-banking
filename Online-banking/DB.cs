@@ -56,6 +56,7 @@ namespace Online_banking
                         // Add user 1
                         var user1 = new User
                         {
+                            personalIdentification = "11122334455",
                             firstname = "Ola",
                             lastname = "Nordmann",
                             address = "Nordmannveien 32",
@@ -80,6 +81,7 @@ namespace Online_banking
                         // Add user 2
                         var user2 = new User
                         {
+                            personalIdentification = "11111111111",
                             firstname = "Kari",
                             lastname = "Nordmann",
                             address = "Nordmannveien 32",
@@ -104,6 +106,7 @@ namespace Online_banking
                         // Add user 3
                         var user3 = new User
                         {
+                            personalIdentification = "22222222222",
                             firstname = "Nils",
                             lastname = "Nordmann",
                             address = "Nordmannveien 32",
@@ -168,6 +171,24 @@ namespace Online_banking
             }
         }
 
+        public bool logIn (string personalIdentification, string password)
+        {
+            using (var db = new ModelContext())
+            {
+                var exist = from u in db.Users
+                            where u.personalIdentification == personalIdentification && u.password == password
+                            select u;
+                if (exist == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+        }
         /* 
          * Her kan vi skrive mer kode
          */
