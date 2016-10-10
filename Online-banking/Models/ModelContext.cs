@@ -16,12 +16,21 @@ namespace Online_banking.Models
             Database.CreateIfNotExists();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Postal> Postals { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
 
+
+        /// <summary>
+        /// The user will represent the customer.
+        /// </summary>
         public class User
         {
             [Key]
@@ -45,6 +54,8 @@ namespace Online_banking.Models
             public string name { get; set; }
             public AccountType accountType { get; set; }
             public double balance { get; set; }
+
+            public virtual List<Transaction> transaction { get; set; }
         }
 
         public class Transaction
@@ -52,7 +63,6 @@ namespace Online_banking.Models
             [Key]
             public int tID { get; set; }
             public string date { get; set; }
-            public Account fromAccount { get; set; }
             public Account toAccount { get; set; }
             public double amount { get; set; }
             public string message { get; set; }
@@ -69,16 +79,12 @@ namespace Online_banking.Models
 
         public class AccountType
         {
+            [Key]
             public int accTypeID { get; set; }
             public bool card { get; set; }
             public double interest { get; set; }
             public double limit {get; set;}
             public double yearlyFee { get; set; }
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
 }
