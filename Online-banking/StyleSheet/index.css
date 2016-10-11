@@ -1,6 +1,6 @@
 ﻿body 
 {
-    padding-top: 350px;
+    padding-top: 300px;
     background: url(../Images/bank.jpg) no-repeat center center fixed; 
     background-size: cover;
 }
@@ -28,7 +28,7 @@
     transition: 0.1s;
 }
  
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default 
+.btn-default:hover
 {
     background: #ffffff;
     color: #0c5c3b;
@@ -36,10 +36,54 @@
 
 .login-label 
 {
+    display: block;
     color: white;
-    font-size: 37px;
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 1px 2px 4px hsla(0, 2%, 31%, 0.50);
 }
 
+/* THUMB ICON */
+.fa-thumbs-down, .fa-thumbs-up 
+{
+    padding: 0% 5% 2% 7%;
+    position: absolute;
+    font-size: 23px;
+    text-shadow: 1px 2px 4px hsla(0, 2%, 31%, 0.50);
+}
+
+.thumb-type .fa-thumbs-up,
+.thumb-type:hover .fa-thumbs-down 
+{
+    display: none;
+}
+
+.thumb-type:hover .fa-thumbs-up 
+{
+    display: inline;
+}
+
+/* LOCK ICON */
+.fa-lock, .fa-unlock-alt 
+{
+    padding: 0% 5% 2% 10%;
+    position: absolute;
+    font-size: 23px;
+    text-shadow: 1px 2px 4px hsla(0, 2%, 31%, 0.50);
+}
+
+.lock-size .fa-unlock-alt,
+.lock-size:hover .fa-lock 
+{
+    display: none;
+}
+
+.lock-size:hover .fa-unlock-alt 
+{
+    display: inline;
+}
+
+/*
 .login-image 
 {
     background: #0c5c3b url(../Images/whitelock.png) no-repeat;
@@ -53,5 +97,7 @@
 .login-image:hover 
 {
     background: #fff url(../Images/greenlock.png) no-repeat;
+    height: 120px;
 }
+*/
 
