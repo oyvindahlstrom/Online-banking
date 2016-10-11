@@ -41,7 +41,7 @@ namespace Online_banking.Models
             public string postalCode { get; set; }
             public string phoneNumber { get; set; }
             public string email { get; set; }
-            public string password { get; set; }
+            public byte[] password { get; set; }
             public string salt { get; set; }
 
             public virtual Postal city { get; set; }

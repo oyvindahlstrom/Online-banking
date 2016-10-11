@@ -11,6 +11,7 @@ namespace Online_banking
     {
         public void initialize_test_data()
         {
+            string[] salt = { Security.Create_Salt(), Security.Create_Salt(), Security.Create_Salt() };
             // Open connection to Database
             using (var db = new ModelContext())
             {
@@ -56,14 +57,15 @@ namespace Online_banking
                         // Add user 1
                         var user1 = new ModelContext.User
                         {
-                            personalIdentification = "11122334455",
+                            personalIdentification = "11111111111",
                             firstname = "Ola",
                             lastname = "Nordmann",
                             address = "Nordmannveien 32",
                             postalCode = "0707",
                             phoneNumber = "07070707",
                             email = "OlaNordmann@example.com",
-                            password = "password",
+                            salt = salt[0],
+                            password = Security.Create_Hash("password" + salt[0]),
                         };
 
                         db.Users.Add(user1);
@@ -81,14 +83,15 @@ namespace Online_banking
                         // Add user 2
                         var user2 = new ModelContext.User
                         {
-                            personalIdentification = "11111111111",
+                            personalIdentification = "22222222222",
                             firstname = "Kari",
                             lastname = "Nordmann",
                             address = "Nordmannveien 32",
                             postalCode = "0707",
                             phoneNumber = "06060606",
                             email = "KariNordmann@example.com",
-                            password = "password",
+                            salt = salt[1],
+                            password = Security.Create_Hash("password" + salt[1]),
                         };
 
                         db.Users.Add(user2);
@@ -106,14 +109,15 @@ namespace Online_banking
                         // Add user 3
                         var user3 = new ModelContext.User
                         {
-                            personalIdentification = "22222222222",
+                            personalIdentification = "33333333333",
                             firstname = "Nils",
                             lastname = "Nordmann",
                             address = "Nordmannveien 32",
                             postalCode = "0707",
                             phoneNumber = "05050505",
                             email = "NilsNordmann@example.com",
-                            password = "password",
+                            salt = salt[2],
+                            password = Security.Create_Hash("password3" + salt[2]),
                         };
 
                         db.Users.Add(user3);
@@ -171,24 +175,6 @@ namespace Online_banking
             }
         }
 
-        public bool logIn (string personalIdentification, string password)
-        {
-            using (var db = new ModelContext())
-            {
-                var exist = from u in db.Users
-                            where u.personalIdentification == personalIdentification && u.password == password
-                            select u;
-                if (exist == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-
-        }
         /* 
          * Her kan vi skrive mer kode
          */
