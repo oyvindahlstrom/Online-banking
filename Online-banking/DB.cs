@@ -174,7 +174,16 @@ namespace Online_banking
                 }
             }
         }
-
+        public List<Account> reciveAccountData(ModelContext.User InputUser)
+        {
+            List<Account> userAccounts;
+            using (var db = new ModelContext())
+            {
+                userAccounts = db.Users.FirstOrDefault
+                    (u => u.personalIdentification == InputUser.personalIdentification).accounts;
+            }
+            return userAccounts;
+        }
         /* 
          * Her kan vi skrive mer kode
          */
