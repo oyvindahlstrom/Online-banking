@@ -19,25 +19,5 @@ namespace Online_banking.Models
         [Display(Name = "Password")]
         public string password { get; set; }
 
-        public bool ValidUser(string _identification, string _password)
-        {
-            using (var db = new ModelContext())
-            {
-                var isValid = from u in db.Users
-                              where u.personalIdentification == _identification
-                              && u.password == _password
-                              select u;
-
-                if (!isValid.Any())
-                {
-                    return false;
-                }
-
-                else
-                {
-                    return true;
-                }
-            }
-        }
     }
 }

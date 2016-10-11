@@ -24,7 +24,7 @@ namespace Online_banking.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (user.ValidUser(user.personal_Identification, user.password))
+                if (user.Validate_User(user.personal_Identification, user.password))
                 {
                     return RedirectToAction("Index");
                 }
