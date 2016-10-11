@@ -184,6 +184,41 @@ namespace Online_banking
             }
             return userAccounts;
         }
+
+        public bool registerTransaction(int thisAcc, int toAcc, int newAmount, string newMessage)
+        {
+            try
+            {
+                using (var db = new ModelContext())
+                {
+                    var fromAccount = db.Accounts.FirstOrDefault
+                        (a => a.aID == thisAcc);
+
+                    var recivingAccount = db.Accounts.FirstOrDefault
+                        (a => a.aID == toAcc);
+
+                    var newTransaction = new Transaction()
+                    {
+                        date = DateTime.Today.ToString("M/d/yyyy"),
+                        toAccount = recivingAccount,
+                        amount = newAmount,
+                        message = newMessage,
+                        isTransferred = false
+                    };
+
+                    //fromAccount.transaction = new List<Transaction>();
+                    db.Transactions.Add(newTransaction);
+                    fromAccount.transaction.Add(newTransaction);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch(Exception error)
+            {
+                return false;
+            }
+                
+        }
         /* 
          * Her kan vi skrive mer kode
          */
