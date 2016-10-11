@@ -42,16 +42,16 @@
 
 .login-image 
 {
-    background-image: url(../Images/whitelock.png);
+    background: #0c5c3b url(../Images/whitelock.png) no-repeat;
     display: block;
-    height: 150px;
+    height: 108px;
+    margin: 5%;
+    padding: 5%;
     transition: 0.1s;
 }
 
 .login-image:hover 
 {
-    background-image: url(../Images/greenlock.png);
-    display: block;
-    height: 150px;
+    background: #fff url(../Images/greenlock.png) no-repeat;
 }
 
