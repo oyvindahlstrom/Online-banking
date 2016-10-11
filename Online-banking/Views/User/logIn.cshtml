@@ -1,0 +1,38 @@
+﻿@model Online_banking.Models.User
+@{
+    ViewBag.Title = "logIn";
+}
+
+<link href="~/StyleSheet/login.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal input-style">
+        <div class="col-md-offset-4 col-md-8">
+            @Html.ValidationSummary(true, "Login failed. Check your login details.")
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                @Html.EditorFor(u => u.personal_Identification, new { htmlAttributes = new { @class = "focus form-control", placeholder = "Social Security" } })
+                @Html.ValidationMessageFor(u => u.personal_Identification, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                @Html.EditorFor(u => u.password, new { htmlAttributes = new { @class = "focus form-control", placeholder = "Password" } })
+                @Html.ValidationMessageFor(u => u.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Log In" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

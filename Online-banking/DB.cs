@@ -54,7 +54,7 @@ namespace Online_banking
                         db.Accounts.Add(account1);
 
                         // Add user 1
-                        var user1 = new User
+                        var user1 = new ModelContext.User
                         {
                             personalIdentification = "11122334455",
                             firstname = "Ola",
@@ -79,7 +79,7 @@ namespace Online_banking
                         };
 
                         // Add user 2
-                        var user2 = new User
+                        var user2 = new ModelContext.User
                         {
                             personalIdentification = "11111111111",
                             firstname = "Kari",
@@ -104,7 +104,7 @@ namespace Online_banking
                         };
 
                         // Add user 3
-                        var user3 = new User
+                        var user3 = new ModelContext.User
                         {
                             personalIdentification = "22222222222",
                             firstname = "Nils",

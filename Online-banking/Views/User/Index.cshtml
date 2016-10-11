@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/StyleSheet/index.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-offset-4 col-md-4">
+            @Html.Label("LOGIN", new { @class = "login-label" })
+            @Html.ActionLink("..with bank ID", "logIn", "User", new { empty = "" }, new { @class = "login-image btn btn-lg btn-block btn-default" })
+        </div>
+        <div class="col-md-offset-4 col-md-4">
+            @Html.ActionLink("Run Testdata", "Test_Data", "Bank", new { empty = "" }, new { @class = "login-image btn btn-lg btn-block btn-primary" })
+        </div>
+    </div>
+</div>

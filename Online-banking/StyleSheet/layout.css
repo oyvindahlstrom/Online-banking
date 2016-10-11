@@ -1,0 +1,46 @@
+﻿body 
+{
+
+}
+
+.navbar-style 
+{
+    background-color: #5d927c;
+    border: none;
+}
+
+.nav-tabs 
+{
+    border-bottom: none;
+    transition: 0.1s;
+}
+
+.nav-tabs > li > a 
+{
+    color: #fff;
+    border: medium none;
+    transition: 0.1s;
+    font-weight: bold;
+    margin-right: 10%
+}
+
+.nav-tabs > li a:hover 
+{
+    background-color: #fff !important;
+    border: medium none;
+    border-radius: 0;
+    color:#0c5c3b;
+}
+
+.nav-tabs > li a:active 
+{
+    background-color: #fff !important;
+    border: medium none;
+    border-radius: 0;
+    color:#0c5c3b;
+}
+
+ul {
+
+    margin-top: 5px;
+}
