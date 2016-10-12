@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using static Online_banking.Models.ModelContext;
 
@@ -228,6 +229,20 @@ namespace Online_banking
                     (t => t.aID == inputAccount.aID).transaction;
             }
             return allTransactions;
+        }
+
+        public int produceRandomNumber ()
+        {
+            int randomGeneratedNumber;
+            StringBuilder strBld = new StringBuilder();
+            Random rnd = new Random();
+
+            for (int i = 0; i<4; i++)
+            {
+                strBld.Append ( rnd.Next ( 0,9 ) );
+            }
+            randomGeneratedNumber = Convert.ToInt32(strBld.ToString());
+            return randomGeneratedNumber;
         }
         /* 
          * Her kan vi skrive mer kode
