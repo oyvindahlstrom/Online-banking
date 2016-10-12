@@ -244,6 +244,34 @@ namespace Online_banking
             randomGeneratedNumber = Convert.ToInt32(strBld.ToString());
             return randomGeneratedNumber;
         }
+
+        public bool userLogin(string inputPID, string password)
+        {
+            using (var db = new ModelContext())
+            {
+                var salt = db.Users.FirstOrDefault(s => s.personalIdentification == inputPID).salt;
+                if (salt == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    var saltedPassword = password + salt;
+                    var hash = Security.Create_Hash(saltedPassword);
+                    var validUser = db.Users.FirstOrDefault
+                    (u => u.personalIdentification == inputPID && u.password == hash);
+
+                    if (validUser == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
         /* 
          * Her kan vi skrive mer kode
          */
