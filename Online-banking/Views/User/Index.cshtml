@@ -3,36 +3,4 @@
     ViewBag.Title = "Index";
 }
 
-<link href="~/StyleSheet/index.css" rel="stylesheet" />
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="~/scripts/jquery-1.10.2.js"></script>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="col-md-offset-4 col-md-4">
-            @Html.Label("LOGIN", new { @class = "login-label" })
-
-            <a href="@Url.Action("LogIn", "User")" class= "lock-size btn btn-lg btn-block btn-default">
-                with BankID &nbsp;
-                <i class="fa fa-lock"></i>
-                <i class="fa fa-unlock-alt"></i>
-            </a>
-
-        </div>
-        <div class="col-md-offset-4 col-md-4">
-
-            <a href="@Url.Action("Test_Data", "Bank")" class="thumb-type btn btn-lg btn-block btn-primary">
-                Run Testdata &nbsp;
-                <i class="fa fa-thumbs-up"></i>
-                <i class="fa fa-thumbs-down"></i>
-            </a>
-
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-
-
-
-</script>
