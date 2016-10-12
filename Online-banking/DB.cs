@@ -216,8 +216,18 @@ namespace Online_banking
             catch(Exception error)
             {
                 return false;
+            }   
+        }
+
+        public List<Transaction> listTransactions(Account inputAccount)
+        {
+            List<Transaction> allTransactions;
+            using (var db = new ModelContext())
+            {
+                allTransactions = db.Accounts.FirstOrDefault
+                    (t => t.aID == inputAccount.aID).transaction;
             }
-                
+            return allTransactions;
         }
         /* 
          * Her kan vi skrive mer kode
