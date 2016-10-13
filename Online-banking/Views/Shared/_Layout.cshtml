@@ -17,22 +17,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Bank", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "" })</li>
+                    <li>
+                        @if (ViewBag.loginApproved == null)
+                        {
+                            <p style="color:white">Not Logged In</p>
+                        }
+                        else if (ViewBag.loginApproved)
+                        {
+                            <p style="color:white">@ViewBag.IsActiv</p>
+                            <p style="color:white">Logged In</p>
+                        }
+                        else
+                        {
+                            <p style="color:white">Not Logged In</p>
+                        }
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+        <footer></footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

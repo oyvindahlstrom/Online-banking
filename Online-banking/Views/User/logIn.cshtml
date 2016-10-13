@@ -3,5 +3,31 @@
     ViewBag.Title = "logIn";
 }
 
+@using (Html.BeginForm("LogIn","User"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-lg-offset-4 col-lg-3">
+        @Html.ValidationSummary(true, "Login failed. Check your login details.")
+    </div>
+    <div class="col-lg-offset-4 col-lg-3">
+        <h2>BankID</h2>
+        @Html.EditorFor(u => u.personal_Identification, new { htmlAttributes = new { @class = "form-control", placeholder = "Social Security" } })
+        @Html.ValidationMessageFor(u => u.personal_Identification, "", new { @class = "text-danger" })
+
+        @Html.EditorFor(u => u.password, new { htmlAttributes = new { @class = "focus form-control", placeholder = "Password" } })
+        @Html.ValidationMessageFor(u => u.password, "", new { @class = "text-danger" })
+        <div class="checkbox">
+            <label>
+                <input value="remember-me" type="checkbox"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-block btn-primary" type="submit"><span class="glyphicon glyphicon-arrow-right"></span></button>
+    </div>
+
+}
+
+    
+
 
 

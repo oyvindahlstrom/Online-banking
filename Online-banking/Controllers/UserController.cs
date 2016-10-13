@@ -16,6 +16,15 @@ namespace Online_banking.Controllers
 
         public ActionResult logIn()
         {
+            if(Session["loginApproved"] == null)
+            {
+                Session["loginApproved"] = false;
+                ViewBag.loginApproved = false;
+            }
+            else
+            {
+                ViewBag.loginApproved = (bool)Session["loginApproved"];
+            }
             return View();
         }
 
@@ -26,15 +35,32 @@ namespace Online_banking.Controllers
             {
                 if (Security.Validate_User(user))
                 {
-                    return RedirectToAction("Index");
+                    Session["loginApproved"] = true;
+                    return RedirectToAction("LoginSuccessfull");
                 }
                 else
                 {
+                    Session["loginApproved"] = false;
+                    ViewBag.loginApproved = false;
                     ModelState.AddModelError("", "Login data is incorrect!");
                 }
             }
 
             return View(user);
+        }
+
+        public ActionResult LoginSuccessfull()
+        {
+            if(Session["loginApproved"] != null)
+            {
+                bool isLoggedIn = (bool)Session["loginApproved"];
+                if(isLoggedIn)
+                {
+                    ViewBag.loginApproved = true;
+                    return View();
+                }
+            }
+            return RedirectToAction("LogIn");
         }
     }
 }
